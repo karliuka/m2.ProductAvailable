@@ -6,47 +6,48 @@
  */
 namespace Faonni\ProductAvailable\Model\Config\Source\Customer;
 
-use Magento\Framework\ObjectManagerInterface;
 use Magento\Framework\Option\ArrayInterface;
+use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 
 /**
- * Source of option values in a form of value-label pairs
+ * Customer Groups Source Option
  */
 class Group implements ArrayInterface
 {
     /**
-     * Customer groups options array
+     * Customer Groups Options array
      *
      * @var null|array
      */
     protected $_options;
 
     /**
-     * Object Manager instance
+     * Customer Group Collection Factory
      *
-     * @var \Magento\Framework\ObjectManagerInterface
+     * @var \Magento\Customer\Model\ResourceModel\Group\CollectionFactory
      */
-    protected $_objectManager;
+    protected $_collectionFactory;
 
     /**
-     * @param ObjectManagerInterface $groupManagement
+	 * Initialize Source
+	 *	
+     * @param CollectionFactory $collectionFactory
      */
     public function __construct(
-        ObjectManagerInterface $objectManager
+        CollectionFactory $collectionFactory
     ) {
-        $this->_objectManager = $objectManager;
+        $this->_collectionFactory = $collectionFactory;
     }
 
     /**
-     * Retrieve customer groups as array
+     * Retrieve Customer Groups As Options
      *
      * @return array
      */
     public function toOptionArray()
     {
-        if (!$this->_options) {
-            $groups = $this->_objectManager
-				->get('\Magento\Customer\Model\ResourceModel\Group\Collection');
+        if (null === $this->_options) {
+            $groups = $this->_collectionFactory->create();
             $this->_options = $groups->toOptionArray();
         }
         return $this->_options;
