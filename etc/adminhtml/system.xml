@@ -10,24 +10,25 @@
 	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="catalog">
-            <group id="available" translate="label" type="text" sortOrder="991" showInDefault="1" showInWebsite="1" showInStore="1">
+            <!-- product available section -->
+			<group id="available" translate="label" type="text" sortOrder="991" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Available</label>
                 <field id="hide_add_to_cart" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Hide Add To Cart</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>                      
 				</field>
-                <field id="hide_add_to_cart_groups" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="hide_add_to_cart_groups" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Hide from Groups</label>
                     <source_model>Faonni\ProductAvailable\Model\Config\Source\Customer\Group</source_model> 
 					<depends>
 						<field id="hide_add_to_cart">1</field>
 					</depends> 					
 				</field>				
-                <field id="hide_price" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="hide_price" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Hide price</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>                      
 				</field>
-                <field id="hide_price_groups" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
+                <field id="hide_price_groups" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Hide from Groups</label>
                     <source_model>Faonni\ProductAvailable\Model\Config\Source\Customer\Group</source_model> 
 					<depends>
