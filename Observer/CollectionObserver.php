@@ -26,21 +26,21 @@ use Magento\Framework\Event\ObserverInterface;
 use Faonni\ProductAvailable\Helper\Data as ProductAvailableHelper;
 
 /**
- * Collection observer
+ * Collection Observer
  */
 class CollectionObserver implements ObserverInterface
 {
     /**
-     * Helper instance
+     * ProductAvailable Helper
      *
      * @var \Faonni\ProductAvailable\Helper\Data
      */
     protected $_helper; 
 	
     /**
-     * @param \Faonni\ProductAvailable\Helper\Data $helper
+     * Initialize Observer
      *
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @param ProductAvailableHelper $helper
      */
     public function __construct(
 		ProductAvailableHelper $helper
@@ -49,7 +49,7 @@ class CollectionObserver implements ObserverInterface
     }
 	
     /**
-     * Handler for load product collection event
+     * Handler For Load Product Collection Event
      *
      * @param Observer $observer
      * @return void
