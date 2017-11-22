@@ -11,21 +11,21 @@ use Magento\Framework\Event\ObserverInterface;
 use Faonni\ProductAvailable\Helper\Data as ProductAvailableHelper;
 
 /**
- * Salable observer
+ * Salable Observer
  */
 class SalableObserver implements ObserverInterface
 {
     /**
-     * Helper instance
+     * ProductAvailable Helper
      *
      * @var \Faonni\ProductAvailable\Helper\Data
      */
     protected $_helper; 
 	
     /**
-     * @param \Faonni\ProductAvailable\Helper\Data $helper
+     * Initialize Observer
      *
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @param ProductAvailableHelper $helper
      */
     public function __construct(
 		ProductAvailableHelper $helper
@@ -34,7 +34,7 @@ class SalableObserver implements ObserverInterface
     }
 	
     /**
-     * Handler for product salable event
+     * Handler For Product Salable Event
      *
      * @param Observer $observer
      * @return void
@@ -45,6 +45,5 @@ class SalableObserver implements ObserverInterface
 			$salable = $observer->getEvent()->getSalable();		
 			$salable->setIsSalable(false);			
 		}
-		return $this;
     }
 } 

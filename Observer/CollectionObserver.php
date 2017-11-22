@@ -47,6 +47,5 @@ class CollectionObserver implements ObserverInterface
 				$product->setCanShowPrice(false);
 			}	
 		}
-		return $this;
     }
 } 

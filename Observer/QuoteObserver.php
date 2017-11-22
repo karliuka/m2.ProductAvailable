@@ -12,21 +12,21 @@ use Faonni\ProductAvailable\Helper\Data as ProductAvailableHelper;
 use Magento\Framework\Exception\LocalizedException;
 
 /**
- * Quote observer
+ * Quote Observer
  */
 class QuoteObserver implements ObserverInterface
 {
     /**
-     * Helper instance
+     * ProductAvailable Helper
      *
      * @var \Faonni\ProductAvailable\Helper\Data
      */
     protected $_helper; 
 	
     /**
-     * @param \Faonni\ProductAvailable\Helper\Data $helper
+     * Initialize Observer
      *
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @param ProductAvailableHelper $helper
      */
     public function __construct(
 		ProductAvailableHelper $helper
@@ -35,7 +35,7 @@ class QuoteObserver implements ObserverInterface
     }
 	
     /**
-     * Handler for product salable event
+     * Handler For Product Salable Event
      *
      * @param Observer $observer
      * @return void
@@ -43,8 +43,9 @@ class QuoteObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
 		if (!$this->_helper->isAvailableAddToCart()) {
-			throw new LocalizedException(__('You can not add products to cart.'));		
+			throw new LocalizedException(
+				__('You can not add products to cart.')
+			);		
 		}
-		return $this;
     }
 } 

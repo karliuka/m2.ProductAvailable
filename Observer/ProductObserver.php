@@ -11,21 +11,21 @@ use Magento\Framework\Event\ObserverInterface;
 use Faonni\ProductAvailable\Helper\Data as ProductAvailableHelper;
 
 /**
- * Product observer
+ * Product Observer
  */
 class ProductObserver implements ObserverInterface
 {
     /**
-     * Helper instance
+     * ProductAvailable Helper
      *
      * @var \Faonni\ProductAvailable\Helper\Data
      */
     protected $_helper; 
 	
     /**
-     * @param \Faonni\ProductAvailable\Helper\Data $helper
+     * Initialize Observer
      *
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @param ProductAvailableHelper $helper
      */
     public function __construct(
 		ProductAvailableHelper $helper
@@ -34,7 +34,7 @@ class ProductObserver implements ObserverInterface
     }
 	
     /**
-     * Handler for load product event
+     * Handler For Load Product Event
      *
      * @param Observer $observer
      * @return void
@@ -45,6 +45,5 @@ class ProductObserver implements ObserverInterface
 			$product = $observer->getEvent()->getProduct();
 			$product->setCanShowPrice(false);
 		}
-		return $this;
     }
 } 
