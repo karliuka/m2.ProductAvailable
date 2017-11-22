@@ -17,24 +17,24 @@ use Magento\Customer\Model\Session;
 class Data extends AbstractHelper
 {
     /**
-     * Hide add to cart config path
+     * Hide Add To Cart Config Path
      */
-    const XML_HIDE_ADD_TO_CART = 'catalog/available/hide_add_to_cart';
+    const XML_CONFIG_HIDE_ADD_TO_CART = 'catalog/available/hide_add_to_cart';
 	
     /**
-     * Hide from groups config path
+     * Hide From Groups Config Path
      */
-    const XML_HIDE_ADD_TO_CART_GROUPS = 'catalog/available/hide_add_to_cart_groups';
+    const XML_CONFIG_HIDE_ADD_TO_CART_GROUPS = 'catalog/available/hide_add_to_cart_groups';
 	
     /**
-     * Hide price config path
+     * Hide Price Config Path
      */
-    const XML_HIDE_PRICE = 'catalog/available/hide_price';
+    const XML_CONFIG_HIDE_PRICE = 'catalog/available/hide_price';
 	
     /**
-     * Hide from groups config path
+     * Hide From Groups Config Path
      */
-    const XML_HIDE_PRICE_GROUPS = 'catalog/available/hide_price_groups';
+    const XML_CONFIG_HIDE_PRICE_GROUPS = 'catalog/available/hide_price_groups';
 	
     /**
 	 * Customer Session
@@ -44,53 +44,56 @@ class Data extends AbstractHelper
     protected $_session;
 
     /**
-     * @param \Magento\Framework\App\Helper\Context $context
-     * @param \Magento\Customer\Model\Session $session
+     * Initialize Helper
 	 *
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @param Context $context
+     * @param Session $session
      */
     public function __construct(
         Context $context,
         Session $session
     ) {
         $this->_session = $session;
-        parent::__construct($context);
+		
+        parent::__construct(
+			$context
+		);
     }
 
     /**
-     * Check whether the customer allows add to cart
+     * Check Whether The Customer Allows Add To Cart
      *
      * @return bool
      */
     public function isAvailableAddToCart()
     {
-		if ($this->_getConfig(self::XML_HIDE_ADD_TO_CART)) {
+		if ($this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART)) {
 			return !in_array(
 				$this->_session->getCustomerGroupId(), 
-				explode(',', $this->_getConfig(self::XML_HIDE_ADD_TO_CART_GROUPS))
+				explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART_GROUPS))
 			);			
 		}
 		return true;
     }	
 
     /**
-     * Check whether the customer allows price
+     * Check Whether The Customer Allows Price
      *
      * @return bool
      */
     public function isAvailablePrice()
     {
-		if ($this->_getConfig(self::XML_HIDE_PRICE)) {
+		if ($this->_getConfig(self::XML_CONFIG_HIDE_PRICE)) {
 			return !in_array(
 				$this->_session->getCustomerGroupId(), 
-				explode(',', $this->_getConfig(self::XML_HIDE_PRICE_GROUPS))
+				explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_PRICE_GROUPS))
 			);			
 		}
 		return true;
     }	 
 	
     /**
-     * Retrieve store configuration data
+     * Retrieve Store Configuration Data
      *
      * @param   string $path
      * @return  string|null
