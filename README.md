@@ -1,5 +1,8 @@
 # Magento2 Product Available
 
+[![Total Downloads](https://poser.pugx.org/faonni/module-product-available/downloads)](https://packagist.org/packages/faonni/module-product-available)
+[![Latest Stable Version](https://poser.pugx.org/faonni/module-product-available/v/stable)](https://packagist.org/packages/faonni/module-product-available)
+
 Extension allows the store owner to hide the product price and add to cart button from guests or certain customer groups.
 This is very necessary for B2B websites where the customer can see the price of the product and add it to the shopping cart after logging on to the site.
 
