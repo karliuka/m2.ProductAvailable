@@ -54,6 +54,15 @@ In the Magento Admin Panel go to *Stores > Configuration > Catalog > Available*.
 
 ## Uninstall
 This works only with modules defined as Composer packages.
+
+#### Remove database data
+
+1. Go to Magento2 root folder
+
+2. Enter following commands to remove database data:
+
+    ```bash
+    php bin/magento module:uninstall -r Faonni_ProductAvailable
   
 #### Remove Extension
     
