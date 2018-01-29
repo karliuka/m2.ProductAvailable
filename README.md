@@ -50,6 +50,8 @@ In the Magento Admin Panel go to *Stores > Configuration > Catalog > Product Ava
 
 ### Catalog
 
+Hidden only add to cart button
+
 <img alt="Magento2 Product Available" src="https://karliuka.github.io/m2/product-available/catalog.png" style="width:100%"/>
 
 ## Uninstall
