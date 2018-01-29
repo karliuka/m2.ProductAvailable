@@ -48,3 +48,27 @@ In the Magento Admin Panel go to *Stores > Configuration > Catalog > Available*.
 ### Catalog
 
 <img alt="Magento2 Product Available" src="https://karliuka.github.io/m2/product-available/catalog.png" style="width:100%"/>
+
+## Uninstall
+This works only with modules defined as Composer packages.
+  
+#### Remove Extension
+    
+1. Go to Magento2 root folder
+
+2. Enter following commands to remove:
+
+    ```bash
+    composer remove faonni/module-product-available
+    ```
+
+### Completion of uninstall
+
+1. Go to Magento2 root folder
+
+2. Enter following commands:
+
+    ```bash
+	php bin/magento setup:upgrade
+	php bin/magento setup:di:compile
+	php bin/magento setup:static-content:deploy  (optional)
