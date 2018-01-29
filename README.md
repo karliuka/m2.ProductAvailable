@@ -44,9 +44,9 @@ Magento CE(EE) 2.0.x, 2.1.x, 2.2.x
 
 ### Configuration
 
-In the Magento Admin Panel go to *Stores > Configuration > Catalog > Available*.
+In the Magento Admin Panel go to *Stores > Configuration > Catalog > Product Available*.
 
-<img alt="Magento2 Product Available" src="https://karliuka.github.io/m2/product-available/config.png" style="width:100%"/>
+<img alt="Magento2 Product Available" src="https://karliuka.github.io/m2/product-available/configuration.png" style="width:100%"/>
 
 ### Catalog
 
