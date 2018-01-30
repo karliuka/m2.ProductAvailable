@@ -56,7 +56,7 @@ class Uninstall implements UninstallInterface
     private function removeConfig()
     {
         $path = 'catalog/available';
-        /** @var \agento\Config\Model\ResourceModel\Config\Data\Collection $collection */
+        /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
         $collection = $this->_configCollectionFactory->create(); 
         $collection->addPathFilter($path);
 
