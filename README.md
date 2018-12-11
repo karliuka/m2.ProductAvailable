@@ -8,7 +8,7 @@ This is very necessary for B2B websites where the customer can see the price of 
 
 ## Compatibility
 
-Magento CE(EE) 2.0.x, 2.1.x, 2.2.x
+Magento CE(EE) 2.0.x, 2.1.x, 2.2.x, 2.3.x
 
 ## Install
 
