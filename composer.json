@@ -2,7 +2,7 @@
     "name": "faonni/module-product-available",
     "description": "Extension allows the store owner to hide the product price and add to cart button from guests or certain customer groups.",
     "type": "magento2-module",
-    "version": "2.0.7",
+    "version": "2.0.8",
     "authors": [{
         "name": "Karliuka Vitalii",
         "email": "karliuka.vitalii@gmail.com"
