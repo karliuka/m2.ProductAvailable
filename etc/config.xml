@@ -5,15 +5,15 @@
  * See COPYING.txt for license details.
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <catalog>
             <available>
                 <hide_add_to_cart>1</hide_add_to_cart>
                 <hide_add_to_cart_groups>0</hide_add_to_cart_groups>
                 <hide_price>1</hide_price>
-                <hide_price_groups>0</hide_price_groups>					
+                <hide_price_groups>0</hide_price_groups>
             </available>
         </catalog>
     </default>
