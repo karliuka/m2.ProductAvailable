@@ -11,30 +11,30 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory as ConfigCollectionFactory;
 
 /**
- * ProductAvailable Uninstall
+ * Uninstall
  */
 class Uninstall implements UninstallInterface
 {
     /**
-     * Config Collection Factory
+     * Config collection factory
      *
      * @var \Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory
      */
     private $_configCollectionFactory;
 
     /**
-     * Initialize Setup
+     * Initialize setup
      *
      * @param ConfigCollectionFactory $configCollectionFactory
      */
     public function __construct(
-		ConfigCollectionFactory $configCollectionFactory
-	) {
+        ConfigCollectionFactory $configCollectionFactory
+    ) {
         $this->_configCollectionFactory = $configCollectionFactory;
     }
-    
+
     /**
-     * Uninstall DB Schema for a Module ProductAvailable
+     * Uninstall DB schema
      *
      * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
@@ -43,7 +43,7 @@ class Uninstall implements UninstallInterface
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
         $setup->startSetup();
-        $this->removeConfig();	
+        $this->removeConfig();
         $setup->endSetup();
     }
 
@@ -56,11 +56,11 @@ class Uninstall implements UninstallInterface
     {
         $path = 'catalog/available';
         /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
-        $collection = $this->_configCollectionFactory->create(); 
+        $collection = $this->_configCollectionFactory->create();
         $collection->addPathFilter($path);
 
         foreach ($collection as $config) {
-			$config->delete(); 	
+            $config->delete();
         }
-    }    
+    }
 }

@@ -7,44 +7,44 @@ namespace Faonni\ProductAvailable\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Faonni\ProductAvailable\Helper\Data as ProductAvailableHelper;
+use Faonni\ProductAvailable\Helper\Data as Helper;
 
 /**
- * Collection Observer
+ * Collection observer
  */
 class CollectionObserver implements ObserverInterface
 {
     /**
-     * ProductAvailable Helper
+     * Helper
      *
      * @var \Faonni\ProductAvailable\Helper\Data
      */
-    protected $_helper; 
-	
+    protected $_helper;
+
     /**
-     * Initialize Observer
+     * Initialize observer
      *
-     * @param ProductAvailableHelper $helper
+     * @param Helper $helper
      */
     public function __construct(
-		ProductAvailableHelper $helper
+        Helper $helper
     ) {
-		$this->_helper = $helper;
+        $this->_helper = $helper;
     }
-	
+
     /**
-     * Handler For Load Product Collection Event
+     * Handler for load product collection event
      *
      * @param Observer $observer
      * @return void
      */
     public function execute(Observer $observer)
     {
-		if (!$this->_helper->isAvailablePrice()) {
-			$collection = $observer->getEvent()->getCollection();
-			foreach ($collection as $product) {
-				$product->setCanShowPrice(false);
-			}	
-		}
+        if (!$this->_helper->isAvailablePrice()) {
+            $collection = $observer->getEvent()->getCollection();
+            foreach ($collection as $product) {
+                $product->setCanShowPrice(false);
+            }
+        }
     }
-} 
+}

@@ -9,27 +9,27 @@ use Magento\Framework\Option\ArrayInterface;
 use Magento\Customer\Model\ResourceModel\Group\CollectionFactory;
 
 /**
- * Customer Groups Source Option
+ * Customer groups source
  */
 class Group implements ArrayInterface
 {
     /**
-     * Customer Groups Options array
+     * Customer groups option
      *
      * @var null|array
      */
     protected $_options;
 
     /**
-     * Customer Group Collection Factory
+     * Customer group collection factory
      *
      * @var \Magento\Customer\Model\ResourceModel\Group\CollectionFactory
      */
     protected $_collectionFactory;
 
     /**
-	 * Initialize Source
-	 *	
+     * Initialize source
+     *
      * @param CollectionFactory $collectionFactory
      */
     public function __construct(
@@ -39,7 +39,7 @@ class Group implements ArrayInterface
     }
 
     /**
-     * Retrieve Customer Groups As Options
+     * Retrieve customer groups as options
      *
      * @return array
      */

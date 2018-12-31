@@ -11,40 +11,40 @@ use Magento\Framework\App\Helper\Context;
 use Magento\Customer\Model\Session;
 
 /**
- * Faonni ProductAvailable Data helper
+ * Helper
  */
 class Data extends AbstractHelper
 {
     /**
-     * Hide Add To Cart Config Path
+     * Hide add to cart config path
      */
     const XML_CONFIG_HIDE_ADD_TO_CART = 'catalog/available/hide_add_to_cart';
-	
+
     /**
-     * Hide From Groups Config Path
+     * Hide from groups config path
      */
     const XML_CONFIG_HIDE_ADD_TO_CART_GROUPS = 'catalog/available/hide_add_to_cart_groups';
-	
+
     /**
-     * Hide Price Config Path
+     * Hide price config path
      */
     const XML_CONFIG_HIDE_PRICE = 'catalog/available/hide_price';
-	
+
     /**
-     * Hide From Groups Config Path
+     * Hide from groups config path
      */
     const XML_CONFIG_HIDE_PRICE_GROUPS = 'catalog/available/hide_price_groups';
-	
+
     /**
-	 * Customer Session
-	 *
+     * Customer session
+     *
      * @var \Magento\Customer\Model\Session
      */
     protected $_session;
 
     /**
-     * Initialize Helper
-	 *
+     * Initialize helper
+     *
      * @param Context $context
      * @param Session $session
      */
@@ -53,46 +53,46 @@ class Data extends AbstractHelper
         Session $session
     ) {
         $this->_session = $session;
-		
+
         parent::__construct(
-			$context
-		);
+            $context
+        );
     }
 
     /**
-     * Check Whether The Customer Allows Add To Cart
+     * Check whether the customer allows add to cart
      *
      * @return bool
      */
     public function isAvailableAddToCart()
     {
-		if ($this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART)) {
-			return !in_array(
-				$this->_session->getCustomerGroupId(), 
-				explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART_GROUPS))
-			);			
-		}
-		return true;
-    }	
+        if ($this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART)) {
+            return !in_array(
+                $this->_session->getCustomerGroupId(),
+                explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART_GROUPS))
+            );
+        }
+        return true;
+    }
 
     /**
-     * Check Whether The Customer Allows Price
+     * Check whether the customer allows price
      *
      * @return bool
      */
     public function isAvailablePrice()
     {
-		if ($this->_getConfig(self::XML_CONFIG_HIDE_PRICE)) {
-			return !in_array(
-				$this->_session->getCustomerGroupId(), 
-				explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_PRICE_GROUPS))
-			);			
-		}
-		return true;
-    }	 
-	
+        if ($this->_getConfig(self::XML_CONFIG_HIDE_PRICE)) {
+            return !in_array(
+                $this->_session->getCustomerGroupId(),
+                explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_PRICE_GROUPS))
+            );
+        }
+        return true;
+    }
+
     /**
-     * Retrieve Store Configuration Data
+     * Retrieve store configuration data
      *
      * @param   string $path
      * @return  string|null
@@ -100,5 +100,5 @@ class Data extends AbstractHelper
     protected function _getConfig($path)
     {
         return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
-    }      
+    }
 }
