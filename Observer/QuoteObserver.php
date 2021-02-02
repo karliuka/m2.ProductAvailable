@@ -7,8 +7,8 @@ namespace Faonni\ProductAvailable\Observer;
 
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Faonni\ProductAvailable\Helper\Data as Helper;
 use Magento\Framework\Exception\LocalizedException;
+use Faonni\ProductAvailable\Helper\Data as Helper;
 
 /**
  * Quote observer
@@ -18,9 +18,9 @@ class QuoteObserver implements ObserverInterface
     /**
      * Helper
      *
-     * @var \Faonni\ProductAvailable\Helper\Data
+     * @var Helper
      */
-    protected $_helper;
+    private $helper;
 
     /**
      * Initialize observer
@@ -30,7 +30,7 @@ class QuoteObserver implements ObserverInterface
     public function __construct(
         Helper $helper
     ) {
-        $this->_helper = $helper;
+        $this->helper = $helper;
     }
 
     /**
@@ -41,7 +41,7 @@ class QuoteObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if (!$this->_helper->isAvailableAddToCart()) {
+        if (!$this->helper->isAvailableAddToCart()) {
             throw new LocalizedException(
                 __('You can not add products to cart.')
             );

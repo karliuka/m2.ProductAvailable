@@ -16,16 +16,16 @@ class Group implements ArrayInterface
     /**
      * Customer groups option
      *
-     * @var null|array
+     * @var mixed[]
      */
-    protected $_options;
+    private $options;
 
     /**
      * Customer group collection factory
      *
-     * @var \Magento\Customer\Model\ResourceModel\Group\CollectionFactory
+     * @var CollectionFactory
      */
-    protected $_collectionFactory;
+    private $collectionFactory;
 
     /**
      * Initialize source
@@ -35,20 +35,20 @@ class Group implements ArrayInterface
     public function __construct(
         CollectionFactory $collectionFactory
     ) {
-        $this->_collectionFactory = $collectionFactory;
+        $this->collectionFactory = $collectionFactory;
     }
 
     /**
      * Retrieve customer groups as options
      *
-     * @return array
+     * @return mixed[]
      */
     public function toOptionArray()
     {
-        if (null === $this->_options) {
-            $groups = $this->_collectionFactory->create();
-            $this->_options = $groups->toOptionArray();
+        if (null === $this->options) {
+            $groups = $this->collectionFactory->create();
+            $this->options = $groups->toOptionArray();
         }
-        return $this->_options;
+        return $this->options;
     }
 }

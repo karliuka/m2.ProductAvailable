@@ -9,18 +9,18 @@
     xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <!-- event catalog_product_is_salable_after -->
     <event name="catalog_product_is_salable_after">
-        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\SalableObserver" />
+        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\SalableObserver"/>
     </event>
     <!-- event sales_quote_product_add_after -->
     <event name="sales_quote_product_add_after">
-        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\QuoteObserver" />
+        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\QuoteObserver"/>
     </event>
     <!-- event catalog_product_collection_load_after -->
     <event name="catalog_product_collection_load_after">
-        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\CollectionObserver" />
+        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\CollectionObserver"/>
     </event>
     <!-- event catalog_product_load_after -->
     <event name="catalog_product_load_after">
-        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\ProductObserver" />
+        <observer name="faonni_product_available" instance="Faonni\ProductAvailable\Observer\ProductObserver"/>
     </event>
 </config>

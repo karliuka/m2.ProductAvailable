@@ -17,9 +17,9 @@ class ProductObserver implements ObserverInterface
     /**
      * Helper
      *
-     * @var \Faonni\ProductAvailable\Helper\Data
+     * @var Helper
      */
-    protected $_helper;
+    private $helper;
 
     /**
      * Initialize observer
@@ -29,7 +29,7 @@ class ProductObserver implements ObserverInterface
     public function __construct(
         Helper $helper
     ) {
-        $this->_helper = $helper;
+        $this->helper = $helper;
     }
 
     /**
@@ -40,7 +40,7 @@ class ProductObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if (!$this->_helper->isAvailablePrice()) {
+        if (!$this->helper->isAvailablePrice()) {
             $product = $observer->getEvent()->getProduct();
             $product->setCanShowPrice(false);
         }

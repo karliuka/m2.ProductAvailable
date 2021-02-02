@@ -18,9 +18,9 @@ class Uninstall implements UninstallInterface
     /**
      * Config collection factory
      *
-     * @var \Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory
+     * @var ConfigCollectionFactory
      */
-    private $_configCollectionFactory;
+    private $configCollectionFactory;
 
     /**
      * Initialize setup
@@ -30,7 +30,7 @@ class Uninstall implements UninstallInterface
     public function __construct(
         ConfigCollectionFactory $configCollectionFactory
     ) {
-        $this->_configCollectionFactory = $configCollectionFactory;
+        $this->configCollectionFactory = $configCollectionFactory;
     }
 
     /**
@@ -55,12 +55,11 @@ class Uninstall implements UninstallInterface
     private function removeConfig()
     {
         $path = 'catalog/available';
-        /** @var \Magento\Config\Model\ResourceModel\Config\Data\Collection $collection */
-        $collection = $this->_configCollectionFactory->create();
+        $collection = $this->configCollectionFactory->create();
         $collection->addPathFilter($path);
-
-        foreach ($collection as $config) {
-            $config->delete();
+        /** @var \Magento\Framework\App\Config\Value $value */
+        foreach ($collection->getItems() as $value) {
+            $value->delete();
         }
     }
 }

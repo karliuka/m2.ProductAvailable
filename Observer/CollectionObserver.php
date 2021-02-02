@@ -17,9 +17,9 @@ class CollectionObserver implements ObserverInterface
     /**
      * Helper
      *
-     * @var \Faonni\ProductAvailable\Helper\Data
+     * @var Helper
      */
-    protected $_helper;
+    private $helper;
 
     /**
      * Initialize observer
@@ -29,7 +29,7 @@ class CollectionObserver implements ObserverInterface
     public function __construct(
         Helper $helper
     ) {
-        $this->_helper = $helper;
+        $this->helper = $helper;
     }
 
     /**
@@ -40,7 +40,7 @@ class CollectionObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        if (!$this->_helper->isAvailablePrice()) {
+        if (!$this->helper->isAvailablePrice()) {
             $collection = $observer->getEvent()->getCollection();
             foreach ($collection as $product) {
                 $product->setCanShowPrice(false);

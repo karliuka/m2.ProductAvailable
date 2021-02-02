@@ -5,9 +5,9 @@
  */
 namespace Faonni\ProductAvailable\Helper;
 
-use Magento\Store\Model\ScopeInterface;
 use Magento\Framework\App\Helper\AbstractHelper;
 use Magento\Framework\App\Helper\Context;
+use Magento\Store\Model\ScopeInterface;
 use Magento\Customer\Model\Session;
 
 /**
@@ -38,9 +38,9 @@ class Data extends AbstractHelper
     /**
      * Customer session
      *
-     * @var \Magento\Customer\Model\Session
+     * @var Session
      */
-    protected $_session;
+    private $session;
 
     /**
      * Initialize helper
@@ -52,7 +52,7 @@ class Data extends AbstractHelper
         Context $context,
         Session $session
     ) {
-        $this->_session = $session;
+        $this->session = $session;
 
         parent::__construct(
             $context
@@ -62,15 +62,13 @@ class Data extends AbstractHelper
     /**
      * Check whether the customer allows add to cart
      *
+     * @param string $storeId
      * @return bool
      */
-    public function isAvailableAddToCart()
+    public function isAvailableAddToCart($storeId = null)
     {
-        if ($this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART)) {
-            return !in_array(
-                $this->_session->getCustomerGroupId(),
-                explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_ADD_TO_CART_GROUPS))
-            );
+        if ($this->isSetFlag(self::XML_CONFIG_HIDE_ADD_TO_CART, $storeId)) {
+            return $this->isAllowCustomerGroup(self::XML_CONFIG_HIDE_ADD_TO_CART_GROUPS, $storeId);
         }
         return true;
     }
@@ -78,27 +76,53 @@ class Data extends AbstractHelper
     /**
      * Check whether the customer allows price
      *
+     * @param string $storeId
      * @return bool
      */
-    public function isAvailablePrice()
+    public function isAvailablePrice($storeId = null)
     {
-        if ($this->_getConfig(self::XML_CONFIG_HIDE_PRICE)) {
-            return !in_array(
-                $this->_session->getCustomerGroupId(),
-                explode(',', $this->_getConfig(self::XML_CONFIG_HIDE_PRICE_GROUPS))
-            );
+        if ($this->isSetFlag(self::XML_CONFIG_HIDE_PRICE, $storeId)) {
+            return $this->isAllowCustomerGroup(self::XML_CONFIG_HIDE_PRICE_GROUPS, $storeId);
         }
         return true;
     }
 
     /**
-     * Retrieve store configuration data
+     * Check whether the customer croup allows
      *
      * @param   string $path
-     * @return  string|null
+     * @param string $storeId
+     * @return  bool
      */
-    protected function _getConfig($path)
+    private function isAllowCustomerGroup($path, $storeId = null)
     {
-        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE);
+        return !in_array(
+            $this->session->getCustomerGroupId(),
+            explode(',', $this->getValue($path, ScopeInterface::SCOPE_STORE, $storeId))
+        );
+    }
+
+    /**
+     * Retrieve config flag
+     *
+     * @param string $path
+     * @param string $storeId
+     * @return bool
+     */
+    private function isSetFlag($path, $storeId = null)
+    {
+        return $this->scopeConfig->isSetFlag($path, ScopeInterface::SCOPE_STORE, $storeId);
+    }
+
+    /**
+     * Retrieve config value by path and scope
+     *
+     * @param string $path
+     * @param string $storeId
+     * @return string
+     */
+    private function getValue($path, $storeId = null)
+    {
+        return (string)$this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORE, $storeId);
     }
 }
