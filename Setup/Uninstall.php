@@ -11,7 +11,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Config\Model\ResourceModel\Config\Data\CollectionFactory as ConfigCollectionFactory;
 
 /**
- * Uninstall
+ * Uninstall schema
  */
 class Uninstall implements UninstallInterface
 {

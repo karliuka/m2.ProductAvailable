@@ -98,7 +98,7 @@ class Data extends AbstractHelper
     {
         return !in_array(
             $this->session->getCustomerGroupId(),
-            explode(',', $this->getValue($path, ScopeInterface::SCOPE_STORE, $storeId))
+            explode(',', $this->getValue($path, $storeId))
         );
     }
 
