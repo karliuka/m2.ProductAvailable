@@ -11,7 +11,7 @@ use Magento\Framework\Exception\LocalizedException;
 use Faonni\ProductAvailable\Helper\Data as Helper;
 
 /**
- * Quote observer
+ * Lock add to cart
  */
 class QuoteObserver implements ObserverInterface
 {

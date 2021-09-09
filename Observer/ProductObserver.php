@@ -10,7 +10,7 @@ use Magento\Framework\Event\ObserverInterface;
 use Faonni\ProductAvailable\Helper\Data as Helper;
 
 /**
- * Product observer
+ * Lock show price
  */
 class ProductObserver implements ObserverInterface
 {
@@ -41,7 +41,7 @@ class ProductObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         if (!$this->helper->isAvailablePrice()) {
-            $product = $observer->getEvent()->getProduct();
+            $product = $observer->getEvent()->getData('product');
             $product->setCanShowPrice(false);
         }
     }

@@ -10,7 +10,7 @@ use Magento\Framework\Event\ObserverInterface;
 use Faonni\ProductAvailable\Helper\Data as Helper;
 
 /**
- * Salable observer
+ * Lock salable
  */
 class SalableObserver implements ObserverInterface
 {
@@ -41,7 +41,7 @@ class SalableObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         if (!$this->helper->isAvailableAddToCart()) {
-            $salable = $observer->getEvent()->getSalable();
+            $salable = $observer->getEvent()->getData('salable');
             $salable->setIsSalable(false);
         }
     }

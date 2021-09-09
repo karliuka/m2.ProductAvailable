@@ -3,10 +3,12 @@
     "description": "Extension allows the store owner to hide the product price and add to cart button from guests or certain customer groups.",
     "type": "magento2-module",
     "version": "2.4.0",
-    "authors": [{
-        "name": "Karliuka Vitalii",
-        "email": "karliuka.vitalii@gmail.com"
-    }],
+    "authors": [
+        {
+            "name": "Karliuka Vitalii",
+            "email": "karliuka.vitalii@gmail.com"
+        }
+    ],
     "license": [
         "OSL-3.0"
     ],
@@ -17,10 +19,10 @@
         "magento/module-sales": "103.0.*"
     },
     "autoload": {
-    "files": [
-            "registration.php" 
+        "files": [
+            "registration.php"
         ],
-    "psr-4": {
+        "psr-4": {
             "Faonni\\ProductAvailable\\": ""
         }
     }
