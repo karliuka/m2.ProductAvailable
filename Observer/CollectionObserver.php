@@ -41,9 +41,11 @@ class CollectionObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         if (!$this->helper->isAvailablePrice()) {
+            /** @var \Magento\Catalog\Model\ResourceModel\Product\Collection $collection */
             $collection = $observer->getEvent()->getData('collection');
-            foreach ($collection as $product) {
-                $product->setCanShowPrice(false);
+            foreach ($collection->getItems() as $product) {
+                /** @var \Magento\Catalog\Model\Product $product */
+                $product->setData('can_show_price', false);
             }
         }
     }

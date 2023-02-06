@@ -41,8 +41,9 @@ class SalableObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         if (!$this->helper->isAvailableAddToCart()) {
+            /** @var \Magento\Framework\DataObject $salable */
             $salable = $observer->getEvent()->getData('salable');
-            $salable->setIsSalable(false);
+            $salable->setData('is_salable', false);
         }
     }
 }
