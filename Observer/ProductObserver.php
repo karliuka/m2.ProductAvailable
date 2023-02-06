@@ -41,8 +41,9 @@ class ProductObserver implements ObserverInterface
     public function execute(Observer $observer)
     {
         if (!$this->helper->isAvailablePrice()) {
+            /** @var \Magento\Catalog\Model\Product $product */
             $product = $observer->getEvent()->getData('product');
-            $product->setCanShowPrice(false);
+            $product->setData('can_show_price', false);
         }
     }
 }
